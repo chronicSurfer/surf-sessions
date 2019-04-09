@@ -22,23 +22,23 @@
                       <i class="material-icons">menu</i>
                   </a>
                   <ul class="right hide-on-med-and-down">
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#services">Services</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="Facebook">
+                      <li><a href="#about" class="">About</a></li>
+                      <li><a href="#services" class="">Services</a></li>
+                      <li><a href="#contact" class="">Connect</a></li>
+                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="Facebook">
                           <i class="fab fa-facebook"></i>
                       </a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="Instagram">
+                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="Instagram">
                           <i class="fab fa-instagram"></i>
                       </a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="LinkedIn">
+                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="LinkedIn">
                           <i class="fab fa-linkedin"></i>
                       </a></li>
                   </ul>
                   <ul class="sidenav grey light-2" id="mobile-menu">
                       <li><a href="#about">About</a></li>
                       <li><a href="#services">Services</a></li>
-                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="#contact">Connect</a></li>
                   </ul>
               </div>
             </nav>
@@ -47,31 +47,31 @@
                     <section class="section container scrollspy" id="contact">
                                 <div class="row">
                                     <div class="col s12 l10 box">
-                                        <form action="">
+                                        <form action="" method="POST">
                                     
                                         <div class="input-field">
                                             <i class="material-icons prefix">date_range</i>
-                                            <input type="text" id="date" class="datepicker">
+                                            <input type="text" id="date" class="datepicker" name="date-surfed">
                                             <label for="date">When did you surf?</label>
                                         </div>
                                         <div class="input-field">
-                                            <i class="material-icons prefix"></i>
-                                            <input type="text" id="location" class="">
+                                            <i class="material-icons prefix">add_location</i>
+                                            <input type="text" id="location" class="" name="location-surfed"> 
                                             <label for="location">Location</label>
                                         </div>
                                         <div class="input-field">
-                                            <i class="material-icons prefix"></i>
-                                            <input type="text" id="date" class="">
-                                            <label for="date">Size</label>
+                                            <i class="material-icons prefix">swap_vert</i>
+                                            <input type="text" id="size" class="" name="size-surfed">
+                                            <label for="size">Size</label>
                                         </div>
                                         <div class="input-field">
-                                            <i class="material-icons prefix"></i>
-                                            <input type="text" id="rating" class="">
+                                            <i class="material-icons prefix">star</i>
+                                            <input type="text" id="rating" class="" name="rating">
                                             <label for="rating">Rate your session from 1-10 (Poor-Epic)</label>
                                         </div>
                                         <div class="input-field">
-                                            <button class="btn submit">Submit</button>
-                                            <button class="btn cancel red">Cancel</button>
+                                            <button class="btn submit" id="submittion" type="button">Submit</button>
+                                            <button class="btn cancel red" id="cancelation">Cancel</button>
                                         </div>
                                         </form>
                                     </div>
@@ -94,35 +94,20 @@
     <!-- Surf Session Table -->
 <div class="container">
     <h2 class="grey-text center">Surf Session Tracker</h2>
-    <table class="centered">
+    <h5 class="grey-text center">Session Rating Average: </h5>
+    <table class="centered table">
             <thead>
               <tr>
                   <th>Date</th>
                   <th>Location</th>
                   <th>Size (ft)</th>
-                  <th>Rating</th>
+                  <th>Session Rating</th>
+                  <th>Action</th>
               </tr>
             </thead>
     
             <tbody>
-              <tr>
-                <td>4/7/19</td>
-                <td>Newport Beach</td>
-                <td>4-5</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>4/8/19</td>
-                <td>Magnolia</td>
-                <td>4</td>
-                <td>6.5</td>
-              </tr>
-              <tr>
-                <td>4/9/19</td>
-                <td>Trestles</td>
-                <td>4</td>
-                <td>7</td>
-              </tr>
+
             </tbody>
     </table>
 </div>4
