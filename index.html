@@ -14,12 +14,125 @@
 </head>
 <body>
     <!-- header -->
-
+    <header>
+            <nav class="nav-wrapper transparent">
+              <div class="container">
+                  <a href="" class="brand-logo">Surf Tracker</a>
+                  <a href="" class="sidenav-trigger" data-target="mobile-menu">
+                      <i class="material-icons">menu</i>
+                  </a>
+                  <ul class="right hide-on-med-and-down">
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#services">Services</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="Facebook">
+                          <i class="fab fa-facebook"></i>
+                      </a></li>
+                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="Instagram">
+                          <i class="fab fa-instagram"></i>
+                      </a></li>
+                      <li><a href="#" class="tooltipped btn-floating btn-small blue darken-4" data-tooltip="LinkedIn">
+                          <i class="fab fa-linkedin"></i>
+                      </a></li>
+                  </ul>
+                  <ul class="sidenav grey light-2" id="mobile-menu">
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#services">Services</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                  </ul>
+              </div>
+            </nav>
+            <div class="container">
+                <div class="row center inputs">
+                    <section class="section container scrollspy" id="contact">
+                                <div class="row">
+                                    <div class="col s12 l10 box">
+                                        <form action="">
+                                    
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">date_range</i>
+                                            <input type="text" id="date" class="datepicker">
+                                            <label for="date">When did you surf?</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <i class="material-icons prefix"></i>
+                                            <input type="text" id="location" class="">
+                                            <label for="location">Location</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <i class="material-icons prefix"></i>
+                                            <input type="text" id="date" class="">
+                                            <label for="date">Size</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <i class="material-icons prefix"></i>
+                                            <input type="text" id="rating" class="">
+                                            <label for="rating">Rate your session from 1-10 (Poor-Epic)</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <button class="btn submit">Submit</button>
+                                            <button class="btn cancel">Cancel</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                    </section>      
+                </div>
+            </div>
+        </header>
+      
     <!-- Input Fields -->
 
     <!-- Parallax -->
 
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="img/lightsand1.jpg" alt="light sand" class="responsive-img">
+        </div>
+    </div>
+      
     <!-- Surf Session Table -->
+<div class="container">
+    <h2 class="grey-text center">Surf Session Tracker</h2>
+    <table class="centered">
+            <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Location</th>
+                  <th>Size (ft)</th>
+                  <th>Rating</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr>
+                <td>4/7/19</td>
+                <td>Newport Beach</td>
+                <td>4-5</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>4/8/19</td>
+                <td>Magnolia</td>
+                <td>4</td>
+                <td>6.5</td>
+              </tr>
+              <tr>
+                <td>4/9/19</td>
+                <td>Trestles</td>
+                <td>4</td>
+                <td>7</td>
+              </tr>
+            </tbody>
+    </table>
+</div>4
+
+    <!-- parallax -->
+    <div class="parallax-container">
+            <div class="parallax">
+                <img src="img/lightsand1.jpg" alt="light sand" class="responsive-img">
+            </div>
+    </div>
 
     <!-- footer -->
     <footer class="page-footer grey darken-3">
@@ -29,7 +142,7 @@
                     <h5>About Me</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem facere incidunt. Ducimus, reprehenderit dolorem fuga nihil voluptate pariatur? Sequi eius, delectus sint cum eaque illum. Quasi esse odit accusamus!</p>
                 </div>
-                <div class="col s12 l4 offset-l2">
+                <div class="col s12 l4">
                     <h5>Connect</h5>
                     <ul>
                         <li><a href="#" class="grey-text text-lighten-3">Facebook</a></li>
