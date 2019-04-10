@@ -4,6 +4,7 @@ $(()=>{
     $('.tooltipped').tooltip();
     //add button
     addButton;
+    clearButton;
 });
 
 var addButton = $('#submittion').click(()=>{
@@ -11,15 +12,23 @@ var addButton = $('#submittion').click(()=>{
     var location = $('input#location').val();
     var size = $('input#size').val();
     var rating = $('input#rating').val();
-    var tr = '<tr><td>'+date+'</td><td>'+location+'</td><td>'+size+'</td><td>'+rating+'</td><td>'+deleteButton+'</td></tr>';
+    var tr = '<tr><td>'+date+'</td><td>'+location+'</td><td>'+size+'</td><td>'+rating+'</td><td><button type="button" class="btn cancel red delete">Delete</button></td></tr>';
+    console.log(tr);
     $('tbody').append(tr);
+    dataClear();
 });
 
-var clearButton;
+var clearButton = $('#cancelation').click( () => {
+    dataClear();
+});
 
-var deleteButton = $('<button/>', {
-    type: 'button',
-    name: 'deleteButton',
-    class: 'btn cancel red',
-    id: 'deleteButton'
+var dataClear = () => {
+    $('#date').val("");
+    $('#location').val("");
+    $('#size').val("");
+    $('#rating').val("");
+};
+
+var deleteButton = $('.delete').click(()=> {
+    
 });
