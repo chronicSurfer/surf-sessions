@@ -29,6 +29,8 @@ var dataClear = () => {
     $('#rating').val("");
 };
 
-var deleteButton = $('.delete').click(()=> {
+// var deleteButton = $('.delete').click(()=> {
     
-});
+// });
+
+// var sessions = 
