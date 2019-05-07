@@ -3,7 +3,6 @@ const mysql = require('mysql');
 const db = require('./server/db');
 const app = express();
 const { resolve } = require('path');
-const { requireAuth } = require('./server/services/passport');
 const PORT = process.env.PORT || 3001;
 
 //middleware 
