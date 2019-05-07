@@ -1,12 +1,9 @@
 const express = require('express');
-const mysql = require('mysql');
-const db = require('./server/db');
 const app = express();
-const { resolve } = require('path');
 const PORT = process.env.PORT || 3001;
 
 //middleware 
-app.use(express.static(resolve(__dirname,'client','dist')));
+app.use(express.static('client'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
