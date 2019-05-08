@@ -1,10 +1,13 @@
 $(()=>{
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
     //add button
+    sizeValidation;
+    ratingValidation;
     addButton;
     clearButton;
+    fetch;
 });
 
 var addButton = $('#submittion').click(()=>{
@@ -29,6 +32,18 @@ var dataClear = () => {
     $('#rating').val("");
 };
 
+var fetch = $('#fetch').click(()=>{
+    $.ajax({
+        url: 'data/',
+        type: 'GET',
+        dataType: 'json',
+        success: (data) => {
+            console.log("ajax success: you're node backend says what up");
+        }
+
+    });
+})
+
 // var deleteButton = $('.delete').click(()=> {
     
 // });
@@ -38,3 +53,11 @@ var dataClear = () => {
 var button = $('<button>', {
     class: "btn cancel"
 })
+
+var sizeValidation = $('.size-val').keypress(function (evt) {
+    evt.preventDefault();
+});
+
+var ratingValidation = $('.rating-val').keypress(function (evt) {
+    evt.preventDefault();
+});
