@@ -56,22 +56,23 @@
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">add_location</i>
-                                            <input type="text" id="location" class="" name="location-surfed"> 
+                                            <input type="text" id="location" class="" name="location-surfed" pattern="/^[a-zA-Z0-9,_. -]*$/" maxlength="90"> 
                                             <label for="location">Location</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">swap_vert</i>
-                                            <input type="text" id="size" class="" name="size-surfed">
+                                            <input type="number" id="size" class="size-val" name="size-surfed" min="1" max="120" pattern="/^-?\d+\.?\d*$/">
                                             <label for="size">Size</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">star</i>
-                                            <input type="text" id="rating" class="" name="rating">
+                                            <input type="number" id="rating" class="rating-val" name="rating" pattern="" min="1" max="10">
                                             <label for="rating">Rate your session from 1-10 (Poor-Epic)</label>
                                         </div>
                                         <div class="input-field">
                                             <button class="btn submit" id="submittion" type="button">Submit</button>
                                             <button class="btn cancel red" id="cancelation" type="button">Cancel</button>
+                                            <button class="btn cancel red" id="fetch" type="button">Fetch</button>
                                         </div>
                                         </form>
                                     </div>
