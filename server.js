@@ -12,7 +12,13 @@ const connection = mysql.createConnection({
     database : 'surf-session-tracker'
 });
 
-connection.connect(console.log("db connected"));
+connection.connect((err)=>{
+    if(!err) {
+        console.log('DB connected');
+    } else {
+        console.log('DB not connected');
+    }
+});
 
 //middleware 
 app.use(express.static('client'));
@@ -23,19 +29,17 @@ function errorHandling(req, res){
     res.status(req.status || 500).send(req.error || 'Server Error');
 }
 
-//temporary database
-const surfdb = {
-    1: {date : '5/5/19', location: 'hb', size: '5', rating: '5'},
-    2: {date : '5/6/19', location: 'newps', size: '6', rating: '7'},
-    3: {date : '5/7/19', location: 'lowers', size: '7', rating: '8'}
-};
-
 //Endpoints
 
 //get data from db
-app.get('/data', (req, res) => {
-    // const id_data = Object.keys(surfdb);
-    res.send(surfdb);
+app.get('/surf-data', (req, res) => {
+        connection.query('SELECT * FROM journal',(err, rows, fields)=>{
+            if (!err) {
+                res.send(rows);
+            } else {
+                console.log(err);
+            }
+        });
 });
 
 //add data to db
@@ -65,8 +69,29 @@ app.post('/add-session', async (req, res, next) => {
     
 
 
-//add delete data from db
+//delete data from db
+app.post('/add-session', async (req, res, next) => {
+    const {date, location, height, rating} = req.body;
+    try {
+        let query = 'DELETE FROM ?? WHERE ??.?? = ?';
+        let inserts = ['journal', 'journal', 'id', Number(id)];
+        let sql = mysql.format(query, inserts);
 
+        const results = await connection.query(sql);
+
+        res.send({
+            success: true, 
+            dataId: results.insertId
+        });
+    
+    } catch(err){
+        req.status = 500;
+        req.error = 'Error deleting surf session';
+
+        return next();
+
+    }
+}, errorHandling);
 
 //update data from db
 
