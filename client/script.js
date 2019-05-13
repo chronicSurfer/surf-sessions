@@ -6,20 +6,39 @@ $(()=>{
     ratingValidation;
     addButton;
     clearButton;
-    fetch;
     loadData;
 });
 
-// var addButton = $('#submittion').click(()=>{
-//     var date = $('input#date').val();
-//     var location = $('input#location').val();
-//     var size = $('input#size').val();
-//     var rating = $('input#rating').val();
-//     var tr = '<tr><td>'+date+'</td><td>'+location+'</td><td>'+size+'</td><td>'+rating+'</td><td><button type="button" class="btn cancel red delete">Delete</button></td></tr>';
-//     console.log(tr);
-//     $('tbody').append(tr);
-//     dataClear();
-// });
+var $date = $('input#date');
+var $location = $('input#location');
+var $size = $('input#size');
+var $rating = $('input#rating');
+
+var addButton = $('#submittion').click(()=>{
+    var addSession = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/add-session",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "cache-control": "no-cache"
+        },
+        "data": {
+          "date": $date.val(),
+          "location": $location.val(),
+          "height": $size.val(),
+          "rating": $rating.val()
+        }
+      }
+      
+      $.ajax(addSession).done(function (response) {
+        console.log(response);
+      });
+    dataClear();
+    // loadData();
+    
+});
 
 var clearButton = $('#cancelation').click( () => {
     dataClear();
