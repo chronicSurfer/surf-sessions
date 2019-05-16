@@ -7,6 +7,7 @@ $(()=>{
     addButton;
     clearButton;
     loadData;
+    delete_entry;
 });
 
 var $date = $('input#date');
@@ -21,7 +22,7 @@ var addButton = $('#submittion').click(()=>{
         "url": "/add-session",
         "method": "POST",
         "headers": {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded",  
           "cache-control": "no-cache"
         },
         "data": {
@@ -36,7 +37,7 @@ var addButton = $('#submittion').click(()=>{
         console.log(response);
       });
     dataClear();
-    // loadData();
+    window.location.reload(true);
     
 });
 
@@ -58,23 +59,49 @@ var loadData = $.ajax({
         success: (data) => {
             console.log("ajax success: you're node backend says what up", data);
             for(var i=0; i<data.length; i++) {
-                var tr = '<tr><td>'+data[i]['date']+'</td><td>'+data[i]['location']+'</td><td>'+data[i]['height']+'</td><td>'+data[i]['rating']+'</td><td><button type="button" class="btn cancel red delete">Delete</button></td></tr>';
-                $('tbody').append(tr);
+                var client_id = data[i].id;
+                var tr = $('<tr>');
+                var date = $('<td>').text(data[i]['date']);
+                var location = $('<td>').text(data[i]['location']);
+                var height = $('<td>').text(data[i]['height']);
+                var rating = $('<td>').text(data[i]['rating']);
+                var operations = $('<td>');
+                var deleteButton = $('<button>', {
+                  class: 'btn cancel red delete',
+                  text: 'Delete',
+                  'data-id': client_id
+                });
+                
+                operations.append(deleteButton);
+                tr.append(date, location, height, rating, operations)
+                $('tbody').append(tr);                      
             }
-
         }
-
     });
 
-// var deleteButton = $('.delete').click(()=> {
-    
+// var delete_entry = $('.delete').click(()=> {
+//   var client_id = ;
+//   console.log(client_id)
+//   var deleteSession = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "delete-session/",
+//     "method": "DELETE",
+//     "headers": {
+//       "Content-Type": "application/x-www-form-urlencoded",
+//       "cache-control": "no-cache"
+//     },
+//     "data": {
+//       "id": client_id
+//     }
+//   }
+  
+//   $.ajax(deleteSession).done(function (response) {
+//     console.log(response);
+//   });
 // });
 
-// var sessions = 
-
-var button = $('<button>', {
-    class: "btn cancel"
-})
+var update_entry = null;
 
 var sizeValidation = $('.size-val').keypress(function (evt) {
     evt.preventDefault();

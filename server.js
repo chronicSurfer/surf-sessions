@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001 || 3002;
 
 //connect db
 const connection = mysql.createConnection({
@@ -10,8 +10,8 @@ const connection = mysql.createConnection({
     port : 3306,
     user: 'root',
     password : 'root',
-    database : 'surf-session-tracker',
-    debug: true
+    database : 'surf-session-tracker'
+    // debug: true
 });
 
 connection.connect((err)=>{
@@ -46,7 +46,6 @@ app.get('/surf-data', (req, res) => {
 
 //add data to db
 app.post('/add-session', (req, res, next) => {
-    //INSERT INTO `journal` (`id`, `date`, `location`, `height`, `rating`) VALUES (NULL, '2019-05-06', 'Newport ', '6', '6');
     const {date, location, height, rating} = req.body;
     try {
         let query = 'INSERT INTO `journal` (`id`, `date`, `location`, `height`, `rating`) VALUES (NULL, ?, ?, ?, ?)';
@@ -72,17 +71,16 @@ app.post('/add-session', (req, res, next) => {
 
 //delete data from db
 app.delete('/delete-session', async (req, res, next) => {
-    const {date, location, height, rating} = req.body;
+    const {id} = req.body;
     try {
-        let query = 'DELETE FROM ?? WHERE ??.?? = ?';
-        let inserts = ['journal', 'journal', 'id', Number(id)];
+        let query = 'DELETE FROM `journal` WHERE `journal`.`id` = ?';
+        let inserts = [Number(id)];
         let sql = mysql.format(query, inserts);
 
         const results = await connection.query(sql);
 
         res.send({
             success: true, 
-            dataId: results.insertId
         });
     
     } catch(err){
@@ -95,7 +93,28 @@ app.delete('/delete-session', async (req, res, next) => {
 }, errorHandling);
 
 //update data from db
+// UPDATE `journal` SET `height` = '9' WHERE `journal`.`id` = 8
+app.post('/update-session', (req, res, next) => {
+    const {date, location, height, rating, id} = req.body;
+    try {
+        let query = 'UPDATE `journal` SET `date`= ?, `location`=?, `height` = ?, `rating`=?  WHERE `journal`.`id`=?';
+        let inserts = [date, location, Number(height), Number(rating), Number(id)];
+        let sql = mysql.format(query, inserts);
 
+        const results = connection.query(sql);
+
+        res.send({
+            success: true
+        });
+    
+    } catch(err){
+        req.status = 500;
+        req.error = 'Error adding surf session';
+
+        return next();
+
+    }
+}, errorHandling);
 
 //starts Express server on defined port
 app.listen(PORT, ()=>{
