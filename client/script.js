@@ -80,33 +80,25 @@ var loadData = $.ajax({
 
 $('tbody').on("click", "button", (e)=>{
   var client_id = $(e.target).data('id');
-console.log(client_id);
-  })
-  // var client_id = $(this).attr("data-id");
-  // console.log(client_id);
-  // console.log("clicked button")
+  var deleteSession = {
+  "async": true,
+  "crossDomain": true,
+  "url": "delete-session/",
+  "method": "DELETE",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "cache-control": "no-cache"
+  },
+  "data": {
+    "id": client_id
+  }
+}
 
-// var delete_entry = $('.delete').click(()=> {
-//   var client_id = this.data.id;
-//   console.log(client_id);
-//   var deleteSession = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "delete-session/",
-//     "method": "DELETE",
-//     "headers": {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "cache-control": "no-cache"
-//     },
-//     "data": {
-//       "id": client_id
-//     }
-//   }
-  
-//   $.ajax(deleteSession).done(function (response) {
-//     console.log(response);
-//   });
-// });
+$.ajax(deleteSession).done(function (response) {
+  console.log(response);
+    });
+  window.location.reload(true);
+  });
 
 var update_entry = null;
 
