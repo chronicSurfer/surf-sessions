@@ -76,13 +76,15 @@ var loadData = $.ajax({
                 $('tbody').append(tr);                      
             }
         }
-    });
+    }); 
 
-$('tbody').on("click", "button", ()=>{
+$('tbody').on("click", "button", (e)=>{
+  var client_id = $(e.target).data('id');
+console.log(client_id);
+  })
   // var client_id = $(this).attr("data-id");
   // console.log(client_id);
-  console.log("Event delegation works for button created dynamically");
-})
+  // console.log("clicked button")
 
 // var delete_entry = $('.delete').click(()=> {
 //   var client_id = this.data.id;
