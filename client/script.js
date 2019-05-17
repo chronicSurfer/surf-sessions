@@ -7,7 +7,6 @@ $(()=>{
     addButton;
     clearButton;
     loadData;
-    delete_entry;
 });
 
 var $date = $('input#date');
@@ -79,9 +78,15 @@ var loadData = $.ajax({
         }
     });
 
+$('tbody').on("click", "button", ()=>{
+  // var client_id = $(this).attr("data-id");
+  // console.log(client_id);
+  console.log("Event delegation works for button created dynamically");
+})
+
 // var delete_entry = $('.delete').click(()=> {
-//   var client_id = ;
-//   console.log(client_id)
+//   var client_id = this.data.id;
+//   console.log(client_id);
 //   var deleteSession = {
 //     "async": true,
 //     "crossDomain": true,
