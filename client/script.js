@@ -70,15 +70,20 @@ var loadData = $.ajax({
                   text: 'Delete',
                   'data-id': client_id
                 });
-                
                 operations.append(deleteButton);
+                var updateButton = $('<button>', {
+                  class: 'btn update yellow',
+                  text: 'Update',
+                  'data-id': client_id
+                });
+                operations.append(updateButton);
                 tr.append(date, location, height, rating, operations)
                 $('tbody').append(tr);                      
             }
         }
     }); 
 
-$('tbody').on("click", "button", (e)=>{
+$('tbody').on("click", ".delete", (e)=>{
   var client_id = $(e.target).data('id');
   var deleteSession = {
   "async": true,
@@ -100,7 +105,36 @@ $.ajax(deleteSession).done(function (response) {
   window.location.reload(true);
   });
 
-var update_entry = null;
+
+  $('tbody').on("click", ".update", (e)=>{
+    var client_id = $(e.target).data('id');
+    console.log(client_id);
+    // var update_session = {
+    //   "async": true,
+    //   "crossDomain": true,
+    //   "url": "update-session/",
+    //   "method": "UPDATE",
+    //   "headers": {
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //     "cache-control": "no-cache"
+    //   },
+    //   "data": {
+    //     "date": $date.val(),
+    //     "location": $location.val(),
+    //     "height": $height.val(),
+    //     "rating": $rating.val(),
+    //     "id": client_id
+    //   }
+    // }
+
+    //   $.ajax(update_session).done(function (response) {
+    //     console.log(response);
+    //       });
+    // window.location.reload(true);
+    });
+
+//dynamic css
+
 
 var sizeValidation = $('.size-val').keypress(function (evt) {
     evt.preventDefault();
