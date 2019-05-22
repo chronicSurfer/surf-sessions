@@ -51,19 +51,38 @@ var dataClear = () => {
     $('#rating').val("");
 };
 
+var sessions = [];
+
 var loadData = $.ajax({
         url: 'surf-data/',
         type: 'GET',
         dataType: 'json',
         success: (data) => {
             console.log("ajax success: you're node backend says what up", data);
+            sessions.push(data);
             for(var i=0; i<data.length; i++) {
                 var client_id = data[i].id;
                 var tr = $('<tr>');
-                var date = $('<td>').text(data[i]['date']);
-                var location = $('<td>').text(data[i]['location']);
-                var height = $('<td>').text(data[i]['height']);
-                var rating = $('<td>').text(data[i]['rating']);
+                var date = $('<td>', {
+                  text: data[i]['date'],
+                  'data-id': client_id,
+                  'contenteditable': "false"
+                });
+                var location = $('<td>', {
+                  text: data[i]['location'],
+                  'data-id': client_id,
+                  'contenteditable': "false"
+                });
+                var height = $('<td>', {
+                  text: data[i]['height'],
+                  'data-id': client_id,
+                  'contenteditable': "false"
+                });
+                var rating = $('<td>', {
+                  text: data[i]['rating'],
+                  'data-id': client_id,
+                  'contenteditable': "false"
+                });
                 var operations = $('<td>');
                 var deleteButton = $('<button>', {
                   class: 'btn cancel red delete',
@@ -106,32 +125,65 @@ $.ajax(deleteSession).done(function (response) {
   });
 
 
-  $('tbody').on("click", ".update", (e)=>{
+
+
+  $('tbody').on("click", ".update", (e, data) => {
     var client_id = $(e.target).data('id');
     console.log(client_id);
-    // var update_session = {
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "url": "update-session/",
-    //   "method": "UPDATE",
-    //   "headers": {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //     "cache-control": "no-cache"
-    //   },
-    //   "data": {
-    //     "date": $date.val(),
-    //     "location": $location.val(),
-    //     "height": $height.val(),
-    //     "rating": $rating.val(),
-    //     "id": client_id
-    //   }
-    // }
+    var row = $(this).parent(data);
 
-    //   $.ajax(update_session).done(function (response) {
-    //     console.log(response);
-    //       });
-    // window.location.reload(true);
+    // $.each(client_id, ()=>{
+    //  if($(this).attr('contenteditable', false)) {
+    //     $(this).attr('contenteditable', true);
+    //   } else if($(this).attr('contenteditable', false)){
+    //     $(this).attr('contenteditable', true);
+    //   }
+    // })
+  
+    
+
+
+  //       if ($(this).html() == 'Update') {                  
+  //           $.each(currentTD, ()=> {
+  //               $(this).prop('contenteditable', true)
+  //           });
+  //       } else {
+  //          $.each(currentTD, ()=> {
+  //               $(this).prop('contenteditable', false)
+  //           });
+  //       }
+
+  //       $(this).html($(this).html() == 'Update' ? 'Save' : 'Update')
+
     });
+
+  // $('tbody').on("click", ".update", (e)=>{
+  //   var client_id = $(e.target).data('id');
+  //   console.log(client_id);
+  //   var update_session = {
+  //     "async": true,
+  //     "crossDomain": true,
+  //     "url": "update-session/",
+  //     "method": "POST",
+  //     "headers": {
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //       "cache-control": "no-cache"
+  //     },
+  //     "data": {
+  //       "date": $date.val(),
+  //       "location": $location.val(),
+  //       "height": $height.val(),
+  //       "rating": $rating.val(),
+  //       "id": client_id
+  //     }
+  //   }
+
+  //     $.ajax(update_session).done(function (response) {
+  //       console.log(response);
+  //         });
+  //   window.location.reload(true);
+  //   });
+
 
 //dynamic css
 
