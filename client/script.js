@@ -2,6 +2,7 @@ $(()=>{
     $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
+    $('.modal').modal();
     sizeValidation;
     ratingValidation;
     addButton;
@@ -93,6 +94,7 @@ var loadData = $.ajax({
                 var updateButton = $('<button>', {
                   class: 'btn update yellow',
                   text: 'Update',
+                  href: 'modal1',
                   'data-id': client_id
                 });
                 operations.append(updateButton);
@@ -125,64 +127,38 @@ $.ajax(deleteSession).done(function (response) {
   });
 
 
-
-
-  $('tbody').on("click", ".update", (e, data) => {
+  $('tbody').on("click", ".update", function(e) {
     var client_id = $(e.target).data('id');
-    console.log(client_id);
-    var row = $(this).parent(data);
-
-    // $.each(client_id, ()=>{
-    //  if($(this).attr('contenteditable', false)) {
-    //     $(this).attr('contenteditable', true);
-    //   } else if($(this).attr('contenteditable', false)){
-    //     $(this).attr('contenteditable', true);
-    //   }
-    // })
-  
+    $('#modal1').modal('open');
+    $('#update-submittion').on("click", ()=>{
+      var update_session = {
+        "async": true,
+        "crossDomain": true,
+        "url": "update-session/",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "cache-control": "no-cache"
+        },
+        "data": {
+          "date": $('input#date1').val(),
+          "location": $('input#location1').val(),
+          "height": $('input#size1').val(),
+          "rating": $('input#rating1').val(),
+          "id": client_id
+        }
+      }
+      
+      $.ajax(update_session).done(function (response) {
+        console.log(response);
+          });
+    dataClear();
+    window.location.reload(true);
+    })
     
-
-
-  //       if ($(this).html() == 'Update') {                  
-  //           $.each(currentTD, ()=> {
-  //               $(this).prop('contenteditable', true)
-  //           });
-  //       } else {
-  //          $.each(currentTD, ()=> {
-  //               $(this).prop('contenteditable', false)
-  //           });
-  //       }
-
-  //       $(this).html($(this).html() == 'Update' ? 'Save' : 'Update')
-
     });
 
-  // $('tbody').on("click", ".update", (e)=>{
-  //   var client_id = $(e.target).data('id');
-  //   console.log(client_id);
-  //   var update_session = {
-  //     "async": true,
-  //     "crossDomain": true,
-  //     "url": "update-session/",
-  //     "method": "POST",
-  //     "headers": {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //       "cache-control": "no-cache"
-  //     },
-  //     "data": {
-  //       "date": $date.val(),
-  //       "location": $location.val(),
-  //       "height": $height.val(),
-  //       "rating": $rating.val(),
-  //       "id": client_id
-  //     }
-  //   }
-
-  //     $.ajax(update_session).done(function (response) {
-  //       console.log(response);
-  //         });
-  //   window.location.reload(true);
-  //   });
+  
 
 
 //dynamic css

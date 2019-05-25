@@ -100,6 +100,7 @@ app.post('/update-session', (req, res, next) => {
         let query = 'UPDATE `journal` SET `date`= ?, `location`=?, `height` = ?, `rating`=?  WHERE `journal`.`id`=?';
         let inserts = [date, location, Number(height), Number(rating), Number(id)];
         let sql = mysql.format(query, inserts);
+        console.log(sql);
 
         const results = connection.query(sql);
 
