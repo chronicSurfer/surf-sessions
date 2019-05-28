@@ -14,5 +14,21 @@ header {
 .box {
     border-radius: 10px;
     background: lightgrey;
-    margin-top: 100px;
+    margin-top: 150px;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

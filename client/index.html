@@ -42,12 +42,13 @@
                   </ul>
               </div>
             </nav>
+                <!-- Input Fields -->
             <div class="container">
                 <div class="row center inputs">
                     <section class="section container scrollspy" id="contact">
                                 <div class="row">
                                     <div class="col s12 l10 box">
-                                        <form action="" method="POST">
+                                        <form action="" method="">
                                     
                                         <div class="input-field">
                                             <i class="material-icons prefix">date_range</i>
@@ -56,17 +57,17 @@
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">add_location</i>
-                                            <input type="text" id="location" class="" name="location-surfed"> 
+                                            <input type="text" id="location" class="" name="location-surfed" pattern="/^[a-zA-Z0-9,_. -]*$/" maxlength="90"> 
                                             <label for="location">Location</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">swap_vert</i>
-                                            <input type="text" id="size" class="" name="size-surfed">
+                                            <input type="number" id="size" class="size-val" name="size-surfed" min="1" max="120" pattern="/^-?\d+\.?\d*$/">
                                             <label for="size">Size</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">star</i>
-                                            <input type="text" id="rating" class="" name="rating">
+                                            <input type="number" id="rating" class="rating-val" name="rating" pattern="" min="1" max="10">
                                             <label for="rating">Rate your session from 1-10 (Poor-Epic)</label>
                                         </div>
                                         <div class="input-field">
@@ -80,8 +81,6 @@
                 </div>
             </div>
         </header>
-      
-    <!-- Input Fields -->
 
     <!-- Parallax -->
 
@@ -123,17 +122,9 @@
     <footer class="page-footer grey darken-3">
         <div class="container">
             <div class="row">
-                <div class="col s12 l6">
-                    <h5>About Me</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem facere incidunt. Ducimus, reprehenderit dolorem fuga nihil voluptate pariatur? Sequi eius, delectus sint cum eaque illum. Quasi esse odit accusamus!</p>
-                </div>
-                <div class="col s12 l4">
-                    <h5>Connect</h5>
-                    <ul>
-                        <li><a href="#" class="grey-text text-lighten-3">Facebook</a></li>
-                        <li><a href="#" class="grey-text text-lighten-3">Instagram</a></li>
-                        <li><a href="#" class="grey-text text-lighten-3">LinkedIn</a></li>
-                    </ul>
+                <div class="col s12 l12">
+                    <h5 class="center-align">About Surf Session Tracker</h5>
+                    <p class="center-align">My passion for surfing led me to create a digital place where I can easily log my sessions to review and help at later times!</p>
                 </div>
             </div>
         </div>
@@ -143,6 +134,41 @@
             </div>
         </div>
     </footer>
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <div class="row">
+                    <div class="col s12 l12">
+                        <form action="" method="">
+                    
+                        <div class="input-field">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="text" id="date1" class="datepicker" name="date-surfed">
+                            <label for="date1">When did you surf?</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">add_location</i>
+                            <input type="text" id="location1" class="" name="location-surfed" pattern="/^[a-zA-Z0-9,_. -]*$/" maxlength="90"> 
+                            <label for="location1">Location</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">swap_vert</i>
+                            <input type="number" id="size1" class="size-val" name="size-surfed" min="1" max="120" pattern="/^-?\d+\.?\d*$/">
+                            <label for="size1">Size</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">star</i>
+                            <input type="number" id="rating1" class="rating-val" name="rating" pattern="" min="1" max="10">
+                            <label for="rating1">Rate your session from 1-10 (Poor-Epic)</label>
+                        </div>
+                        <div class="input-field">
+                            <button class="btn submit" id="update-submittion" type="button">Submit</button>
+                            <button class="btn cancel red" id="update-cancelation" type="button">Cancel</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
