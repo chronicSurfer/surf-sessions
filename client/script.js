@@ -94,7 +94,7 @@ var loadData = function() {
                 });
                 operations.append(deleteButton);
                 var updateButton = $('<button>', {
-                  class: 'btn update yellow',
+                  class: 'btn update yellow black-text',
                   text: 'Update',
                   href: 'modal1',
                   'data-id': client_id

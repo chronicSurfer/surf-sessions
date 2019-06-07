@@ -2,7 +2,8 @@ header {
     background: url(img/waveheader.jpg);
     background-size: cover;
     background-position: center;
-    min-height: 1000px;
+    /* min-height: 1000px; */
+    height: 100vh;
 }
 
 @media screen and (max-width: 670px) {
@@ -14,7 +15,7 @@ header {
 .box {
     border-radius: 10px;
     background: lightgrey;
-    margin-top: 150px;
+    margin-top: 125px;
 }
 
 @keyframes moveInLeft {
@@ -31,4 +32,8 @@ header {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+div.parallax-container {
+    height: 30vh;
 }
