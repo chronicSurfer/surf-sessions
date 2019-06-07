@@ -17,21 +17,20 @@
     <header>
             <nav class="nav-wrapper transparent">
               <div class="container">
-                  <a href="" class="brand-logo">Surf Tracker</a>
-                  <a href="" class="sidenav-trigger" data-target="mobile-menu">
+                  <a class="brand-logo">Surf Tracker</a>
+                  <!-- <a href="" class="sidenav-trigger" data-target="mobile-menu">
                       <i class="material-icons">menu</i>
-                  </a>
+                  </a> -->
                   <ul class="right hide-on-med-and-down">
-                      <li><a href="#about" class="">About</a></li>
-                      <li><a href="#surf-tracker" class="">Surf Session Tracker</a></li>
-                      <li><a href="#contact" class="">Connect</a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="Facebook">
+                      
+                      
+                      <li><a href="https://www.facebook.com/iHATEspongers" target="_blank" class="tooltipped btn-floating btn-small grey" data-tooltip="Facebook">
                           <i class="fab fa-facebook"></i>
                       </a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="Instagram">
+                      <li><a href="https://www.instagram.com/adventurous_kyle" target="_blank" class="tooltipped btn-floating btn-small grey" data-tooltip="Instagram">
                           <i class="fab fa-instagram"></i>
                       </a></li>
-                      <li><a href="#" class="tooltipped btn-floating btn-small grey" data-tooltip="LinkedIn">
+                      <li><a href="https://www.linkedin.com/in/kyle-umbarger-1035245b/" target="_blank" class="tooltipped btn-floating btn-small grey" data-tooltip="LinkedIn">
                           <i class="fab fa-linkedin"></i>
                       </a></li>
                   </ul>
@@ -63,7 +62,7 @@
                                         <div class="input-field">
                                             <i class="material-icons prefix">swap_vert</i>
                                             <input type="number" id="size" class="size-val" name="size-surfed" min="1" max="120" pattern="/^-?\d+\.?\d*$/">
-                                            <label for="size">Size</label>
+                                            <label for="size">Max Wave Height (ft)</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">star</i>
@@ -71,7 +70,7 @@
                                             <label for="rating">Rate your session from 1-10 (Poor-Epic)</label>
                                         </div>
                                         <div class="input-field">
-                                            <button class="btn submit" id="submittion" type="button">Submit</button>
+                                            <button class="btn submit" id="submittion" type="button" href="surf-tracker">Submit</button>
                                             <button class="btn cancel red" id="cancelation" type="button">Cancel</button>
                                         </div>
                                         </form>
@@ -89,9 +88,9 @@
             <img src="img/lightsand1.jpg" alt="light sand" class="responsive-img">
         </div>
     </div>
-      
+        
     <!-- Surf Session Table -->
-<div class="container" href="#surf-tracker">
+<div class="container" id="surf-tracker">
     <h2 class="grey-text center">Surf Session Tracker</h2>
     <!-- <h5 class="grey-text center">Session Rating Average: </h5> -->
     <table class="centered table sessions">
@@ -153,7 +152,7 @@
                         <div class="input-field">
                             <i class="material-icons prefix">swap_vert</i>
                             <input type="number" id="size1" class="size-val" name="size-surfed" min="1" max="120" pattern="/^-?\d+\.?\d*$/">
-                            <label for="size1">Size</label>
+                            <label for="size1">Max Wave Height (ft)</label>
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">star</i>

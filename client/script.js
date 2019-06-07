@@ -7,7 +7,7 @@ $(()=>{
     ratingValidation;
     addButton;
     clearButton;
-    loadData;
+    loadData();
 });
 
 var $date = $('input#date');
@@ -37,7 +37,7 @@ var addButton = $('#submittion').click(()=>{
         console.log(response);
       });
     dataClear();
-    window.location.reload(true);
+    loadData();
     
 });
 
@@ -54,7 +54,9 @@ var dataClear = () => {
 
 var sessions = [];
 
-var loadData = $.ajax({
+var loadData = function() {
+  $('tbody').empty();
+  $.ajax({
         url: 'surf-data/',
         type: 'GET',
         dataType: 'json',
@@ -92,7 +94,7 @@ var loadData = $.ajax({
                 });
                 operations.append(deleteButton);
                 var updateButton = $('<button>', {
-                  class: 'btn update yellow',
+                  class: 'btn update yellow black-text',
                   text: 'Update',
                   href: 'modal1',
                   'data-id': client_id
@@ -103,6 +105,7 @@ var loadData = $.ajax({
             }
         }
     }); 
+  }
 
 $('tbody').on("click", ".delete", (e)=>{
   var client_id = $(e.target).data('id');
@@ -123,13 +126,14 @@ $('tbody').on("click", ".delete", (e)=>{
 $.ajax(deleteSession).done(function (response) {
   console.log(response);
     });
-  window.location.reload(true);
+    loadData(); 
   });
 
 
   $('tbody').on("click", ".update", function(e) {
     var client_id = $(e.target).data('id');
     $('#modal1').modal('open');
+
     $('#update-submittion').on("click", ()=>{
       var update_session = {
         "async": true,
@@ -148,15 +152,24 @@ $.ajax(deleteSession).done(function (response) {
           "id": client_id
         }
       }
+    
       
       $.ajax(update_session).done(function (response) {
         console.log(response);
+        loadData();
+        $('#modal1').modal('close');
+
+
           });
+
     dataClear();
-    window.location.reload(true);
     })
     
     });
+
+    $('#update-cancelation').on("click", ()=> {
+      $('#modal1').modal('close');
+    })
 
   
 
