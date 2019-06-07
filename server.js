@@ -93,7 +93,6 @@ app.delete('/delete-session', async (req, res, next) => {
 }, errorHandling);
 
 //update data from db
-// UPDATE `journal` SET `height` = '9' WHERE `journal`.`id` = 8
 app.post('/update-session', (req, res, next) => {
     const {date, location, height, rating, id} = req.body;
     try {

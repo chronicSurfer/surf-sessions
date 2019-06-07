@@ -38,7 +38,6 @@ var addButton = $('#submittion').click(()=>{
       });
     dataClear();
     loadData();
-    // window.location.reload(true);
     
 });
 
@@ -128,14 +127,12 @@ $.ajax(deleteSession).done(function (response) {
   console.log(response);
     });
     loadData(); 
-  // window.location.reload(true);
   });
 
 
   $('tbody').on("click", ".update", function(e) {
     var client_id = $(e.target).data('id');
     $('#modal1').modal('open');
-    // $('#date1').text.client_id['date'];
 
     $('#update-submittion').on("click", ()=>{
       var update_session = {
@@ -166,7 +163,6 @@ $.ajax(deleteSession).done(function (response) {
           });
 
     dataClear();
-    // window.location.reload(true);
     })
     
     });
