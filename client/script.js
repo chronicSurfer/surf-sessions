@@ -16,6 +16,7 @@ var $size = $('input#size');
 var $rating = $('input#rating');
 
 var addButton = $('#submittion').click(()=>{
+    $('#modal3').modal('open');
     var addSession = {
         "async": true,
         "crossDomain": true,
@@ -107,27 +108,42 @@ var loadData = function() {
     }); 
   }
 
-$('tbody').on("click", ".delete", (e)=>{
-  var client_id = $(e.target).data('id');
-  var deleteSession = {
-  "async": true,
-  "crossDomain": true,
-  "url": "delete-session/",
-  "method": "DELETE",
-  "headers": {
-    "Content-Type": "application/x-www-form-urlencoded",
-    "cache-control": "no-cache"
-  },
-  "data": {
-    "id": client_id
-  }
-}
+  
+  $('tbody').on("click", ".delete", function(e){
+    var client_id = $(e.target).data('id');
+    $('#modal2').modal('open');
 
-$.ajax(deleteSession).done(function (response) {
-  console.log(response);
-    });
-    loadData(); 
+    $('#delete-agree').on("click", ()=> {
+      
+      var deleteSession = {
+        "async": true,
+        "crossDomain": true,
+        "url": "delete-session/",
+        "method": "DELETE",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "cache-control": "no-cache"
+        },
+        "data": {
+          "id": client_id
+        }
+      }
+    
+      $.ajax(deleteSession).done(function (response) {
+        console.log(response);
+        dataClear();
+        $('#delete-agree').off("click");
+        $('#modal2').modal('close');
+      });
+      loadData();
+    
+    })
   });
+
+  $('#delete-cancelation').on("click", ()=> {
+    $('#modal2').modal('close');
+  })
+
 
 
   $('tbody').on("click", ".update", function(e) {
@@ -152,15 +168,13 @@ $.ajax(deleteSession).done(function (response) {
           "id": client_id
         }
       }
-    
-      
+       
       $.ajax(update_session).done(function (response) {
         console.log(response);
         loadData();
+        $('#update-submittion').off("click");
         $('#modal1').modal('close');
-
-
-          });
+        });
 
     dataClear();
     })
