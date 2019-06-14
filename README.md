@@ -16,8 +16,8 @@
 >    - `git clone https://github.com/chronicSurfer/surf-sessions`
 > 2. Change directory into the newly cloned repo
 >    - `cd surf-sessions`
-> 3. Create MySQL Table
-> 4. Start MAMP Servers
+> 3. Install/Start MAMP Servers 
+> 4. Create MySQL Table
 > 5. Install Nodemon
 > 6. Start Node
 >    - `nodemon server.js`
